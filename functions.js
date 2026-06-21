@@ -1,4 +1,7 @@
-  // Auto-fill today's date
+ var row=document.querySelector("tbody tr");
+var body = document.querySelector("tbody");
+var but = document.querySelector("button");
+// Auto-fill today's date
   document.getElementById('currentDate').valueAsDate =
     new Date();
 
@@ -46,65 +49,12 @@
       document.querySelector('#expenseTable tbody');
 
     const row = tbody.insertRow();
-
-    row.innerHTML = `
-
-      <td>
-        <input type="date" class="expense-date" />
-      </td>
-
-      <td>
-        <textarea
-          rows="3"
-          placeholder="Property"
-        ></textarea>
-      </td>
-
-      <td>
-        <textarea
-          rows="3"
-          placeholder="Ownership"
-        ></textarea>
-      </td>
-
-      <td>
-        <input
-          type="number"
-          step="0.01"
-          class="amount-input"
-          placeholder="Amount"
-        />
-      </td>
-
-      <td>
-        <textarea
-          rows="3"
-          placeholder="Lot"
-        ></textarea>
-      </td>
-
-      <td>
-        <textarea
-          rows="3"
-          placeholder="Expense Type"
-        ></textarea>
-      </td>
-
-      <td>
-        <textarea
-          rows="3"
-          placeholder="Expense Description"
-        ></textarea>
-      </td>
-
-      <td>
-        <input
-          type="file"
-          class="receipt-file"
-        />
-      </td>
-
-    `;
+      var newrow=row.cloneNode(true);
+       newrow.querySelectorAll("input" , "textarea").forEach(element => {
+         element.value = ""
+    
+  });
+   body.appendChild(newrow);
 
     attachAmountListeners();
 
